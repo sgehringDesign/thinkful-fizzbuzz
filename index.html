@@ -8,63 +8,6 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script>
 
-
-    // JS Lint Suggestions
-
-/*
-    (function () {
-      'use strict';
-
-      
-      function printFizzbuzz(i) {
-
-        var label = $('<div />', {
-              'class' : 'label'
-            }),
-
-            col_1 = $('<div />', {
-              'class' : 'col-xs-6',
-              'html' : '<strong>'+i+'</strong>'
-            }),
-
-            col_2 = $('<div />', {
-              'class' : 'col-xs-6'
-            }),
-
-            row = $('<div>', {
-              'class' : 'row',
-              'html' : $(col_1).html()
-            });
-
-        if ((i % 3 === 0) && (i % 5 === 0)) {
-          return $(row).append($(label).addClass( "label-sucesss" ).text('fizzbuzz').html());
-        }
-
-        if (i % 3 === 0) {
-          return $(row).append($(label).addClass( "label-primary"  ).text('fizz').html());
-        }
-
-        if (i % 5 === 0) {
-          return $(row).append($(label).addClass( "label-danger"  ).text('buzz').html());
-        }
-
-        return $(row).append($(label).addClass( "label-default"  ).text(i).html());
-      }
-
-      
-      $(document).ready(function () {
-        // - Does not Work Becuase #wrapper return array with 0 items
-        var i;
-        for (i = 0; i <= 100; i += 1) {
-          console.log(i);          
-          $('#wrapper').appendTo(printFizzbuzz(i));
-        }
-      });
-      
-
-    }());
-*/
-
     $(document).ready(function () {
       'use strict';
 
