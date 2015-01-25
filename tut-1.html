@@ -8,16 +8,30 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script>
 
+
+
+
+
     $(document).ready(function () {
       'use strict';
 
+      function fizzbuzz(max) {
+        function check(n) {
+          var msg = '';
+          if ( n % 3 == 0 ) { msg += "Fizz" };
+          if ( n % 5 == 0 ) { msg += "Buzz" };
+          return msg || n;
+        }
+
+        for (var i = 1; i <= max; i++) {
+          cprint(check(i));
+        }
+      }
+
+
       function printFizzbuzz(i) {
 
-       function createElement(tagName, options) {
-          return $('<'.tagName.' />', options);
-       }
-
-       var label = $('<div />', {
+        var label = $('<div />', {
               'class' : 'label'
             }),
 
