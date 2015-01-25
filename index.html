@@ -11,28 +11,20 @@
     $(document).ready(function () {
       'use strict';
 
+      var row, col_1, col_2, label;
+
       function printFizzbuzz(i) {
+        
+        row = $('<div>', { 'class' : 'row' });
+      
+        col_1 = $('<div />', {
+          'class' : 'col-1 col-xs-1 text-center',
+          'html' : '<strong>'+i+' :</strong>'
+        });
 
-       function createElement(tagName, options) {
-          return $('<'.tagName.' />', options);
-       }
+        col_2 = $('<div />', { 'class' : 'col-2 col-xs-11' });
 
-       var label = $('<div />', {
-              'class' : 'label'
-            }),
-
-            col_1 = $('<div />', {
-              'class' : 'col-1 col-xs-1 text-center',
-              'html' : '<strong>'+i+' :</strong>'
-            }),
-
-            col_2 = $('<div />', {
-              'class' : 'col-2 col-xs-11'
-            }),
-
-            row = $('<div>', {
-              'class' : 'row'
-            });
+        label = $('<div />', { 'class' : 'label' });        
 
         $(row).append( $(col_1) );
 
