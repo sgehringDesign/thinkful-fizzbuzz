@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      'use strict';
+
+      var delay = (function() {
+        var timer = 0;
+        return function(callback, ms){
+          clearTimeout (timer);
+          timer = setTimeout(callback, ms);
+        };
+      })();
+
+      // PRINT FIZZBUZZ ROW
+      function printFizzbuzz(i) {
+
+        var row, col_1, col_2, label;
+
+        row = $('<div>', { 'class' : 'row' });
+      
+        col_1 = $('<div />', {
+          'class' : 'col-1 col-xs-1 text-center',
+          'html' : '<strong>'+i+' :</strong>'
+        });
+
+        col_2 = $('<div />', { 'class' : 'col-2 col-xs-11' });
+
+        label = $('<div />', { 'class' : 'label' });        
+
+        $(row).append( $(col_1) );
+
+        if ((i % 3 === 0) && (i % 5 === 0)) {
+          $(col_2).append($(label).addClass( 'label-success' ).text( 'fizzbuzz' ) );
+          return $(row).append($(col_2) );
+        }
+
+        if (i % 3 === 0) {
+          $(col_2).append( $(label).addClass( 'label-primary'  ).text('fizz') );
+          return $(row).append( $(col_2) );
+        }
+
+        if (i % 5 === 0) {
+          $(col_2).append( $(label).addClass( 'label-danger'  ).text('buzz') );
+          return $(row).append( $(col_2) );
+        }
+
+        $(col_2).append( $(label).addClass( 'label-default'  ).text(i) );
+        return $(row).append( $(col_2) );
+      }
+
+
+      // RESET INPUT ON CLICK
+      $('#totalNumber').click(function() {
+        $(this).parent().removeClass('has-error has-feedback');
+        $(this).val('');
+        $(this).parent().find(".glyphicon").fadeOut();
+        $(this).parent().find(".help-block").fadeOut();
+        $('#wrapper').html('<div id="fizzbuzz">FIZZBUZZ</div>');
+      });
+
+
+      // HANDLE KEY UP 
+      $('#totalNumber').keyup(function() {
+        
+        var userInput,
+            errMessageString = "Please enter a valid number. +o)",
+            errMessageOverTotal = "Holy cow are you trying to crash the browser!?  Please enter a total number under 150. =O)";
+
+        userInput = $(this).val();
+
+        if(userInput.length == 0) {
+          $(this).parent().removeClass('has-error has-feedback');
+          $(this).val('');
+          $(this).parent().find(".glyphicon").fadeOut();
+          $(this).parent().find(".help-block").fadeOut();
+          $('#wrapper').html('');
+          $('#wrapper').html('<div id="fizzbuzz">FIZZBUZZ</div>');
+          return;
+        }
+
+        if(isNaN(userInput)) {
+          $(this).parent().addClass('has-error has-feedback');
+          $(this).parent().append('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="false"></span>');
+          if($(this).parent().find('.help-block').length === 0) {
+            $(this).parent().append('<span class="help-block">'+errMessageString+'</span>');
+          } else {
+            $(this).parent().find('.help-block').text(errMessageString).fadeIn();
+          }
+          $('#wrapper').html('');
+          $('#wrapper').html('<div id="fizzbuzz">FIZZBUZZ</div>');
+          return;
+        }
+
+        if(userInput > 150) {
+          $(this).parent().addClass('has-error has-feedback');
+          $(this).parent().append('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="false"></span>');
+          if($(this).parent().find('.help-block').length === 0) {
+            $(this).parent().append('<span class="help-block">'+errMessageOverTotal+'</span>');
+          } else {
+            $(this).parent().find('.help-block').text(errMessageOverTotal).fadeIn();
+          }
+          $('#wrapper').html('');
+          $('#wrapper').html('<div id="fizzbuzz">FIZZBUZZ</div>');
+          return;
+        }
+
+        $('#fizzbuzz').fadeOut();
+
+        var i;
+        $('#wrapper').html('');
+        for (i = 0; i <= userInput; i += 1) {
+          $('#wrapper').append( printFizzbuzz(i) );
+        }
+
+      });
+    });
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+ <style>
+
+  .hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s linear;
+  }
+
+  header {
+    padding:1.3rem;
+  }
+
+  .form-group {
+    border-bottom:1px solid #eee;
+    padding-bottom: 1.5rem;
+  }
+
+  #fizzbuzz {
+    color:#e8e8e8;
+    margin-top:15rem;
+    text-align: center;
+    font-size:6rem;
+  }
+
+  #wrapper {
+    margin-bottom:3rem;
+    border-bottom:1px solid #eee;
+    min-height: 425px;
+
+  }
+
+  .col-1 {
+    white-space: nowrap;
+  }
+
+  .row:nth-child(odd) {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background: #eee;
+  }
+
+ </style>
+
+</head>
+<body>
+  <header>
+    <h1>FizzBuzz Test</h1>
+  </header> 
+  <div class="container-fluid" >
+    <div class="form-group ">
+      <label class="control-label" for="totalNumber">Add Total Numbers to Test</label>
+      <input type="text" class="form-control" id="totalNumber" placeholder="Enter a total number up to 150" tabindex="1">
+    </div>
+    <div id="wrapper" tabindex="2">
+      <div id="fizzbuzz">FIZZBUZZ</div>'
+    </div>
+  </div>
+</body>
+</html>
