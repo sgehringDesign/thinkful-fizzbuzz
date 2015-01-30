@@ -1,6 +1,3 @@
-# thinkful-fizzbuzz
-Fizz Buzz project for front end thinkful class
-
 # Thinkful.com Exercise: Fizz Buzz   
 
 ####Technology
