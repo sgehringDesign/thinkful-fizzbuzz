@@ -11,6 +11,7 @@
     $(document).ready(function () {
       'use strict';
 
+/*  No need for delay - Older code to be removed */
       var delay = (function() {
         var timer = 0;
         return function(callback, ms){
@@ -18,6 +19,8 @@
           timer = setTimeout(callback, ms);
         };
       })();
+/*  No need for delay - Older code to be removed */
+
 
       // PRINT FIZZBUZZ ROW
       function printFizzbuzz(i) {
